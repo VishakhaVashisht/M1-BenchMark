@@ -1,4 +1,3 @@
-
 const questions = [
   {
     category: "Science: Computers",
@@ -36,7 +35,7 @@ const questions = [
     difficulty: "easy",
     question: "On Twitter, what was the original character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100",],
+    incorrect_answers: ["120", "160", "100"],
   },
   {
     category: "Science: Computers",
@@ -98,39 +97,54 @@ const quizQuestion = function () {
     let newP = document.createElement("p");
     newP.innerText = questions[i].question;
     newElement.append(newP);
-   for (let k=0; k<questions[i].incorrect_answers.length; k++) {
-      const option = questions[i].incorrect_answers[k]
+    for (let k = 0; k < questions[i].incorrect_answers.length; k++) {
+      const option = questions[i].incorrect_answers[k];
       let checkbox = `<div>
-      <input type="checkbox" id="${option}" name="${option}"
+      <input type="checkbox" id="${option}" name="${option}" value="${option}"
              >
       <label for="${option}">${option}</label>
-    </div>`
-    newElement.innerHTML+= checkbox
-
+    </div>`;
+      newElement.innerHTML += checkbox;
     }
-  let option1 = questions[i].correct_answer
-      checkbox =  `<div>
-      <input type="checkbox" id="${option1}" name="${option1}"
+    let option1 = questions[i].correct_answer;
+    checkbox = `<div>
+      <input type="checkbox" id="${option1}" name="${option1}" value="${option1}"
              >
       <label for="${option1}">${option1}</label>
-    </div>` 
-      newElement.innerHTML += checkbox
+    </div>`;
+    newElement.innerHTML += checkbox;
   }
 };
-/*To Check the result
-const showResult = function(){
-    let selectedOption = document.getElementsByName('option')
-    for (let i = 0; i<selectedOption.length;i++){
-      if (selectedOption[i].checked)
-      {
-        selected = selectedOption[i].value
-      }
-    }
-    if(selected === questions[i])
-}
+/*To Check the result*/
+const showResult = function () {
+  let storageResult;
+  let finalResult;
 
-*/
+
+  var YesOrNo = (function() {
+    if(document.select.checkbox.checked) {
+      console.log(document.select.Active.value )
+ 
+    } else {
+      document.select.Active.value = 'no'
+    }
+  });
+  for (let i = 0; i < questions.length; i++) {
+   /* let ch = document.querySelector( 'checkbox[i].input[value]:checked')
+    ch.innerText = checkbox[i].value
+    storageResult = document.querySelectorAll(
+      'checkbox[i].input[value="$option"]:checked' ||
+        'checkbox[i].input[value="$option1"]:checked'
+    )
+    if (storageResult === questions[i].correct_answer) {
+      finalResult = finalResult + 1;
+    }
+
+  console.log(finalResult);*/
+}
+}
 
 window.onload = function () {
   quizQuestion();
+  showResult();
 };
