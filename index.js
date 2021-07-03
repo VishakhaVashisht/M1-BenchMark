@@ -6,7 +6,7 @@ const questions = [
     question:
       "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
     correct_answer: "1000",
-    incorrect_answers: ["512", "1024", "500"],
+    incorrect_answers: ["512", "1024", "500","1000"],
   },
   {
     category: "Science: Computers",
@@ -18,7 +18,7 @@ const questions = [
     incorrect_answers: [
       "Nothing",
       "Saves a .png file of what&#039;s on the screen in your screenshots folder in photos",
-      "Closes all windows",
+      "Closes all windows",  "Captures what&#039;s on the screen and copies it to your clipboard",
     ],
   },
   {
@@ -27,7 +27,7 @@ const questions = [
     difficulty: "easy",
     question: "Ada Lovelace is often considered the first computer programmer.",
     correct_answer: "True",
-    incorrect_answers: ["False"],
+    incorrect_answers: ["False" ,"True"],
   },
   {
     category: "Science: Computers",
@@ -35,7 +35,7 @@ const questions = [
     difficulty: "easy",
     question: "On Twitter, what was the original character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
+    incorrect_answers: ["120", "160", "140","100"],
   },
   {
     category: "Science: Computers",
@@ -43,7 +43,7 @@ const questions = [
     difficulty: "easy",
     question: "&quot;HTML&quot; stands for Hypertext Markup Language.",
     correct_answer: "True",
-    incorrect_answers: ["False"],
+    incorrect_answers: ["True","False"],
   },
   {
     category: "Science: Computers",
@@ -51,7 +51,7 @@ const questions = [
     difficulty: "easy",
     question: "Time on Computers is measured via the EPOX System.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["False","True"],
   },
   {
     category: "Science: Computers",
@@ -59,7 +59,7 @@ const questions = [
     difficulty: "easy",
     question: "The Windows ME operating system was released in the year 2000.",
     correct_answer: "True",
-    incorrect_answers: ["False"],
+    incorrect_answers: ["True","False"],
   },
   {
     category: "Science: Computers",
@@ -68,7 +68,7 @@ const questions = [
     question:
       "The numbering system with a radix of 16 is more commonly referred to as ",
     correct_answer: "Hexidecimal",
-    incorrect_answers: ["Binary", "Duodecimal", "Octal"],
+    incorrect_answers: ["Binary","Hexidecimal", "Duodecimal", "Octal"],
   },
   {
     category: "Science: Computers",
@@ -76,7 +76,7 @@ const questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True","False",],
   },
   {
     category: "Science: Computers",
@@ -86,11 +86,13 @@ const questions = [
     correct_answer: "Local Area Network",
     incorrect_answers: [
       "Long Antenna Node",
-      "Light Access Node",
+      "Light Access Node","Local Area Network",
       "Land Address Navigation",
     ],
   },
 ];
+/* Define All Questions*/
+
 const quizQuestion = function () {
   const newElement = document.getElementById("questions");
   for (let i = 0; i < questions.length; i++) {
@@ -100,51 +102,35 @@ const quizQuestion = function () {
     for (let k = 0; k < questions[i].incorrect_answers.length; k++) {
       const option = questions[i].incorrect_answers[k];
       let checkbox = `<div>
-      <input type="checkbox" id="${option}" name="${option}" value="${option}"
-             >
+      <input type="checkbox" id="selected" name="${option}" value="${option}" >
       <label for="${option}">${option}</label>
     </div>`;
       newElement.innerHTML += checkbox;
     }
-    let option1 = questions[i].correct_answer;
+   /* let option1 = questions[i].correct_answer;
     checkbox = `<div>
-      <input type="checkbox" id="${option1}" name="${option1}" value="${option1}"
-             >
+      <input type="checkbox" id="selected" name="${option1}" value="${option1}" >
       <label for="${option1}">${option1}</label>
     </div>`;
-    newElement.innerHTML += checkbox;
+    newElement.innerHTML += checkbox;*/
   }
 };
 /*To Check the result*/
+
 const showResult = function () {
-  let storageResult;
-  let finalResult;
-
-
-  var YesOrNo = (function() {
-    if(document.select.checkbox.checked) {
-      console.log(document.select.Active.value )
- 
-    } else {
-      document.select.Active.value = 'no'
-    }
-  });
-  for (let i = 0; i < questions.length; i++) {
-   /* let ch = document.querySelector( 'checkbox[i].input[value]:checked')
-    ch.innerText = checkbox[i].value
-    storageResult = document.querySelectorAll(
-      'checkbox[i].input[value="$option"]:checked' ||
-        'checkbox[i].input[value="$option1"]:checked'
-    )
-    if (storageResult === questions[i].correct_answer) {
-      finalResult = finalResult + 1;
+  let result = document.getElementById("results");
+  var ele = document.getElementsByTagName("input");
+  for (let i = 0; i < ele.length; i++) {
+    if ((ele[i].type = "checkbox")) {
+      let checkedElement = ele[i].checked;
+       if (ele[i].checked)
+      //  result.innerHTML +=ele[i].name + " Value: " + ele[i].value + "<br>";
+      result.innerHTML = result + 1
     }
 
-  console.log(finalResult);*/
-}
-}
+  }
 
+};
 window.onload = function () {
   quizQuestion();
-  showResult();
 };
