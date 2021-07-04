@@ -116,21 +116,48 @@ const quizQuestion = function () {
   }
 };
 /*To Check the result*/
-
-const showResult = function () {
-  let result = document.getElementById("results");
+let answer = []
+for (let i=0; i<questions[i].length;i++)
+{
+  answer =  questions[i].correct_answer;
+}
+function showResult() {
+  let result = []
   var ele = document.getElementsByTagName("input");
   for (let i = 0; i < ele.length; i++) {
     if ((ele[i].type = "checkbox")) {
-      let checkedElement = ele[i].checked;
+     
        if (ele[i].checked)
-      //  result.innerHTML +=ele[i].name + " Value: " + ele[i].value + "<br>";
-      result.innerHTML = result + 1
+     result += ele[i].name;
+     // result.innerHTML = result + 1
+     return result
     }
 
   }
 
 };
+let result = showResult()
+
+/**
+ *function displayResult(result,answer){
+  let matches = []
+  for (let i =0; i <result.length;i++){
+    for(let j=0; j<answer.length;j++){
+      if(result[i]===answer[j]){
+        let finalResult
+        finalResult ++
+
+      }
+    }
+  }
+
+  let displayResultFinal = document.getElementById('results')
+  displayResult.innerText = finalResult
+}
+ */
+
+
 window.onload = function () {
   quizQuestion();
+  //displayResult(result,answer)
 };
